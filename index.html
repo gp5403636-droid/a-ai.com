@@ -171,6 +171,17 @@
     @media (max-width:760px) { .nav > .button { font-size:11px; } }
 
     /* Layout final para telas estreitas e intermediarias. */
+    .menu-step-heading { display:flex; align-items:center; gap:12px; margin-bottom:18px; color:#fff9ed; }
+    .menu-step-heading > span { display:grid; width:30px; height:30px; place-items:center; border-radius:8px; color:var(--night); background:var(--lime); font-size:11px; font-weight:800; }
+    .menu-step-heading strong,.menu-step-heading small { display:block; }
+    .menu-step-heading strong { font:700 16px/1.1 "DM Sans",sans-serif; }
+    .menu-step-heading small { margin-top:4px; color:#cdbbd0; font-size:11px; }
+    .menu-step-products > .menu-step-heading { color:var(--berry); }
+    .menu-step-products > .menu-step-heading small { color:#705b6e; }
+    .cart-final { margin-top:24px; padding-top:22px; border-top:1px solid rgba(255,250,237,.18); }
+    .cart-final .menu-step-heading { margin-bottom:12px; }
+    .extras { padding-top:0; }
+    .extras::before { content:"Escolha os complementos para o item selecionado"; display:block; margin-bottom:12px; color:#cdbbd0; font-size:11px; line-height:1.4; }
     html { overflow-x:hidden; }
     body { min-width:320px; overflow-x:hidden; }
     .menu[hidden] + .mobile-cart-jump { display:none; }
@@ -194,13 +205,13 @@
       .nav { gap:10px; }
       .nav .logo { flex:1 1 auto; min-width:0; }
       .nav > .button { flex:0 0 auto; min-height:42px; }
-      .hero { min-height:0; }
+      .hero { min-height:100svh; height:auto; overflow:visible; }
       .content { display:flex; width:100%; min-height:0; padding-top:126px; padding-bottom:34px; flex-direction:column; align-items:stretch; }
       .copy { width:100%; }
       .hero-actions { flex-wrap:wrap; gap:14px; }
       .hero-actions .button { min-height:48px; }
       .hero-photo { position:relative; top:auto; right:auto; bottom:auto; align-self:center; max-width:calc(100vw - 58px); margin-top:30px; transform:none; }
-      .quick-links { position:relative; right:auto; bottom:auto; left:auto; width:100%; transform:none; }
+      .quick-links { position:relative; right:auto; bottom:auto; left:auto; width:100%; transform:none; overflow-x:auto; overscroll-behavior-x:contain; -webkit-overflow-scrolling:touch; }
       .split-inner { width:100%; }
       .split { min-height:0; padding:70px 27px 58px; }
       .split-inner { display:flex; min-height:0; flex-direction:column; align-items:stretch; gap:34px; }
@@ -270,10 +281,11 @@
   <section class="menu" id="cardapio" hidden>
     <header class="menu-head"><p>feito do seu jeito</p><h2>Monte seu <span>pedido</span></h2></header>
     <div class="menu-layout">
-      <div class="product-grid">
+      <div class="product-grid menu-step menu-step-products">
+        <div class="menu-step-heading"><span>01</span><div><strong>Escolha seu pedido</strong><small>Selecione um item do cardápio</small></div></div>
         <div id="product-list"></div>
       </div>
-      <aside class="cart" aria-live="polite"><h3 class="cart-title">Seu carrinho <span class="cart-count">0</span></h3><div class="extras"><strong>Adicionais para o próximo item</strong><div class="extras-list" id="extras-list"></div><p class="extras-summary" id="extras-summary" aria-live="polite">Nenhum adicional selecionado.</p></div><ul class="cart-items"><li class="empty-cart">Seu carrinho está vazio. Escolha um item para começar.</li></ul><div class="total"><span>Total</span><span class="total-value">R$ 0,00</span></div><button class="button checkout" disabled>Enviar pedido no WhatsApp</button></aside>
+      <aside class="cart" aria-live="polite"><div class="menu-step-heading"><span>02</span><div><strong>Personalize</strong><small>Adicionais para o próximo item</small></div></div><div class="extras"><div class="extras-list" id="extras-list"></div><p class="extras-summary" id="extras-summary" aria-live="polite">Nenhum adicional selecionado.</p></div><div class="cart-final"><div class="menu-step-heading"><span>03</span><div><strong>Finalize o pedido</strong><small>Confira e envie pelo WhatsApp</small></div></div><ul class="cart-items"><li class="empty-cart">Seu carrinho está vazio. Escolha um item para começar.</li></ul><div class="total"><span>Total</span><span class="total-value">R$ 0,00</span></div><button class="button checkout" disabled>Enviar pedido no WhatsApp</button></div></aside>
     </div>
   </section>
   <button class="mobile-cart-jump" type="button" aria-label="Ir para finalizar pedido" title="Ir para finalizar pedido"></button>
